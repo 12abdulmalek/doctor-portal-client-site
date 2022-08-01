@@ -1,0 +1,42 @@
+
+.register-form{
+    /* margin-left: 20%; */
+    display: flex;
+    justify-content: center;
+}
+.login-img{
+    padding: 33px;
+}
+.login-pic{
+    width: 90%;
+}
+.register-form{
+ padding: 44px;
+}
+.register{
+    width: 280px;
+    height: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.564);
+   padding: 12px;
+   border-radius: 5px;
+}
+ .register-form  form input{
+     width: 250px;
+     height: 22px;
+     padding: 5px;
+     outline: none;
+     border: none;
+     margin: 3px;
+     border-radius: 6px;
+     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.564);
+}
+ .register-form  form  .submit-btn{
+     cursor: pointer;
+     background-color: aqua;
+     padding-top: 10px;
+     padding-bottom: 25px;
+     margin: 3px;
+     border-radius: 6px;
+     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.564);
+}
+

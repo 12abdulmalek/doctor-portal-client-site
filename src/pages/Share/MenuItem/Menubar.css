@@ -1,0 +1,86 @@
+.menu-items{
+    background:rgb(0, 234, 255) ;
+    
+}
+.menu-items a{
+     text-decoration: none;
+    
+}
+.menu-sec{
+    background:rgb(0, 234, 255) ;
+    z-index: 9999999999999999999999999999999999999999999999;
+    display: flex;
+    align-items: center
+}
+.menu-logo{
+    z-index: 999999999999999999;
+}
+.menu-bar ul{
+    display: flex;
+     margin-left: 80%;
+}
+.menu-bar ul li{
+    margin: 0px 22px;
+    list-style: none;
+}
+#check,#open-btn,#close-btn{
+    display: none;
+}
+@media (max-width:1000px) {
+    .menu-bar ul{
+         margin-left: 36%;
+    }
+}
+@media (max-width:700px) {
+    .menu-bar{
+        position: fixed;
+        width: 100%;
+        height: 230px;
+        right: 0px;
+        top: -250px;
+        transition: all .5s ease;
+        background:rgb(0, 234, 255) ;
+    }
+    .menu-bar ul{
+        flex-direction: column;
+        position: fixed;
+        margin: 90px 0px;
+        z-index: -9999999999999999;
+    }
+    .menu-bar ul li{
+        z-index: 9999999999999999999999999999999999;
+    }
+    label #open-btn,label #close-btn{
+        position: absolute;
+        cursor: pointer;
+    }
+    label #open-btn{
+        top: 12px;
+        padding: 12px 10px;
+       font-size: 35px;
+         right: 0px;
+         display: block;
+    }
+    label #close-btn{
+        top: 12px;
+       padding: 12px 10px;
+        right: 0px;
+        font-size: 34px;
+        display: none;
+    }
+    #check:checked ~.menu-bar {
+        top: 0px;
+        right: 0;
+        z-index: -4444444444;
+    }
+    #check:checked  ~ label #open-btn{
+        left: -200px;
+        display: none;
+    }
+    #check:checked ~ label #close-btn{
+        right: 0px;
+        display: block;
+        z-index: 9999999999999999999;
+    }
+    
+}

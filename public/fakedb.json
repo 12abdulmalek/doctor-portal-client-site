@@ -1,0 +1,14 @@
+[
+    {
+        "name" : "medicine/General physician",
+        "routername" :"general-physician",
+        "img"  : "",
+        "desc":" medicine is best "
+    },
+    {
+        "name" : "medicine/General physician",
+        "routername" :"internal-medicine",
+        "img"  : "",
+        "desc":" medicine is best"
+    }
+]
