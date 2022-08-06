@@ -1,60 +1,33 @@
-import { ContentPasteOffSharp } from '@mui/icons-material';
-import { Box, Button, CircularProgress } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { loadFromLocalstorage } from '../../../utils/handleLocalhost';
-import Calender from './Calender';
-import './service.css'
-const Service = () => {
-    const { value, setValue } = useAuth();
-    const { _id } = useParams();
+import Calender from '../Services/Calender';
+
+const Appointment = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const getUserData = loadFromLocalstorage();
-    const appointMent = (_id) => {
-        const timeValue = { time: value, email: getUserData?.email };
-        const filter = data.filter(item => item._id === _id);
-        const dataAssign = Object.assign({}, ...filter);
-        const newData = {
-            ...dataAssign,
-            ...timeValue,
-
-        }
-        fetch('http://localhost:5000/appointment', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-    }
+    const user = loadFromLocalstorage();
+    const [value,setValue] = useState(new Date());
+  
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:5000/doctors')
+        fetch(`http://localhost:5000/appointment?search=${user?.email}&date=${value}`)
             .then(res => res.json())
             .then(data => {
-                const filter = data.filter((item) => item.specialist === _id);
-                setData(filter);
+                setData(data);
                 setLoading(false);
             })
-    }, []);
+    }, [value]);
     return (
         <div>
-            <div>
-                <Calender value={value} setValue={setValue}></Calender>
-            </div>
             <Box sx={{ display: 'flex',justifyContent:'center' }}>
-               {
-                loading  &&  <CircularProgress />
-               }
+             
             </Box>
-            <Container>
+        { value.toDateString()}
+            <Calender value={value} setValue={setValue}> </Calender>
+              <Container>
                 {
                     data.map((item, index) => <div key={index}>
                         <div className='doctor-card'>
@@ -75,18 +48,20 @@ const Service = () => {
                             </div>
                             <div className='doctor-card4'>
                                 <h3 className='fee'>{item.fee}</h3>
-                                <span>(incl. VAT)  Per consultation</span>
-                                <br />
-                                <span>{value.toDateString()}</span>
-                                <br />
-                                <Button onClick={(e) => appointMent(item._id)} variant="contained" color="success">Appointment</Button>
+                                 <span>(incl. VAT)  Per consultation</span>
+                                 <br/>
+                              
+                              <br/>
                             </div>
                         </div>
                     </div>)
                 }
             </Container>
+            {
+                loading  &&  <CircularProgress />
+               }
         </div>
     );
 };
 
-export default Service;
+export default Appointment;

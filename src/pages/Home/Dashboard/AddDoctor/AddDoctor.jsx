@@ -36,16 +36,16 @@ const AddDoctor = () => {
     return (
         <div>
             <Container>
-                <Grid container spacing={4} direction="row"
+                <Grid  container spacing={4} direction="row"
                     justifyContent="center"
                     alignItems="center">
-                    <Grid xs={12} sm={12} md={6}>
+                    <Grid item={true} xs={12} sm={12} md={6}>
                         <div className='login-img'>
                             {/* <img className='login-pic' src={pic} alt='loading...' /> */}
 
                         </div>
                     </Grid>
-                    <Grid xs={12} sm={12} md={6}  >
+                    <Grid item={true} xs={12} sm={12} md={6}  >
                         <div className='register-form'>
                             <div className='register'>
                                 <h3>ADDING DOCTOR</h3>

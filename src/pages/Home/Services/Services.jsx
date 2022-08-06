@@ -9,9 +9,7 @@ import { Container } from '@mui/system';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom'
 import './service.css'
-const Services = () => {
-    const [value, setValue] = useState(new Date());
-    console.log(value.toDateString());
+const Services = ({value,setValue}) => {
     const [data, setData] = useState([]);
     useEffect(() => {
         fetch('./fakedb.json')
@@ -28,17 +26,17 @@ const Services = () => {
                 <Grid container direction="row"  justifyContent="center"
                         alignItems="center"  spacing={2}>
                     {
-                        data.map((item, index) => <Grid key={index} item lg={4} xs={12} md={6} sm={6}> <Card  xs={{ maxWidth: 340 }}>
+                        data.map((items, index) => <Grid item={true} key={index}  lg={4} xs={12} md={6} sm={6}> <Card  xs={{ maxWidth: 340 }}>
                             <CardMedia
                                 component="img"
                                 height="140"
                                 image="/static/images/cards/contemplative-reptile.jpg"
                                 alt="green iguana"
                             />
-                            <Link to={`/specialities/${item.routername}`} >
+                            <Link to={`/specialities/${items.routername}`} >
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
-                                  {item.name}
+                                  {items.name}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     Lizards are a widespread group of squamate reptiles, with over 6,000
